@@ -19,8 +19,9 @@
     </div>
 
     <div in:fly={{ y: 50, duration: 800 }} class="text-center md:text-left">
-      <h1 class="text-5xl md:text-7xl font-extrabold">
-      <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">Martin Ronning</span>
+      <h1 class="text-5xl md:text-7xl font-extrabold"> 
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">Martin R<span class="o-slash"><span class="sr-only">ø</span><span aria-hidden="true">o</span></span>nning
+        </span>
       </h1>
       <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-lg">
         Full-stack developer producing experiences with Svelte and Unity.
@@ -30,6 +31,35 @@
         <a href="#contact" class="px-6 py-3 border border-purple-600 text-purple-600 rounded-full hover:bg-purple-50 dark:hover:bg-gray-800 transition">Contact</a>
       </div>
     </div>
-
   </div>
 </section>
+<style>
+  .o-slash {
+    position: relative;
+    display: inline-block;
+  }
+
+  .o-slash [aria-hidden] {
+    user-select: none;
+  }
+  
+  .o-slash::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 60%;
+    width: 0.95em;
+    height: 0.12em;
+    border-radius: 999px;
+    background: linear-gradient(to left, #a855f7, #ec4899);
+    transform: translate(-50%, -50%) rotate(-60deg) scaleX(0);
+    animation: strike 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation-delay: 1.5s;
+  }
+
+  @keyframes strike {
+    to {
+      transform: translate(-50%, -50%) rotate(-60deg) scaleX(1);
+    }
+  }
+</style>
