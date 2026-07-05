@@ -83,6 +83,14 @@
     animation-delay: 1.5s;
   }
 
+  .text-gradient {
+    background-image: linear-gradient(to right, #ffbd59, #b93241);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
+  }
+
   @keyframes strike {
     to {
       transform: translate(-50%, -50%) rotate(-60deg) scaleX(1);
