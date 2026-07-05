@@ -31,10 +31,10 @@
 
     <div in:fly={{ y: 50, duration: 800 }} class="text-center md:text-left">
       <h1 class="text-5xl md:text-7xl font-extrabold" aria-label="Martin Rønning" oncopy={handleNameCopy}>
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">Martin R<span class="o-slash">o</span>nning
-        </span>
-
-        
+        <span class="flex flex-wrap gap-x-3 justify-center md:justify-start text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+          <span class="whitespace-nowrap">Martin</span>
+          <span class="whitespace-nowrap">R<span class="o-slash">o</span>nning</span>
+        </span> 
       </h1>
       <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-lg">
         Full-stack developer producing experiences with Svelte and Unity.
