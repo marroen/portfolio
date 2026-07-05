@@ -31,7 +31,7 @@
 
     <div in:fly={{ y: 50, duration: 800 }} class="text-center md:text-left">
       <h1 class="text-5xl md:text-7xl font-extrabold" aria-label="Martin Rønning" oncopy={handleNameCopy}>
-        <span class="flex flex-wrap gap-x-3 justify-center md:justify-start text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">
+        <span class="flex flex-wrap gap-x-3 justify-center md:justify-start text-transparent bg-clip-text" style="background-image: linear-gradient(to right, #ffbd59, #b93241)">
           <span class="whitespace-nowrap">Martin</span>
           <span class="whitespace-nowrap">R<span class="o-slash">o</span>nning</span>
         </span> 
@@ -40,13 +40,26 @@
         Full-stack developer producing experiences with Svelte and Unity.
       </p>
       <div class="mt-8 flex gap-4 justify-center md:justify-start">
-        <a href="#projects" class="px-6 py-3 bg-purple-600 text-white rounded-full hover:bg-purple-700 transition">See my work</a>
-        <a href="#contact" class="px-6 py-3 border border-purple-600 text-purple-600 rounded-full hover:bg-purple-50 dark:hover:bg-gray-800 transition">Contact</a>
+        <a href="#projects" class="px-6 py-3 text-white rounded-full transition" style="background:#b93241;">See my work</a>
+        <a href="#contact" class="secondary-btn">Contact</a>
       </div>
     </div>
   </div>
 </section>
 <style>
+  .secondary-btn {
+    padding: 0.75rem 1.5rem;
+    border: 2px solid #b93241;
+    color: #b93241;
+    border-radius: 9999px;
+    transition: 0.2s;
+  }
+  .secondary-btn:hover {
+    background: rgba(255, 189, 89, 0.15);
+  }
+  .dark .secondary-btn:hover {
+    background: rgba(255, 189, 89, 0.08);
+  }
   .o-slash {
     position: relative;
     display: inline-block;
@@ -64,7 +77,7 @@
     width: 0.95em;
     height: 0.12em;
     border-radius: 999px;
-    background: linear-gradient(to left, #a855f7, #ec4899);
+    background: linear-gradient(to right, #b93241, #ffbd59);
     transform: translate(-50%, -50%) rotate(-60deg) scaleX(0);
     animation: strike 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     animation-delay: 1.5s;
