@@ -1,9 +1,20 @@
 <script lang="ts">
   import {DotLottieSvelte} from '@lottiefiles/dotlottie-svelte';
   import { fade, fly } from 'svelte/transition';
-
   let animSrc = '/animations/cam1.lottie';
+
+  function handleNameCopy(e: ClipboardEvent) {
+    const text = window.getSelection()?.toString() ?? '';
+    if (text.includes('Ronning')) {
+      e.preventDefault();
+      e.clipboardData?.setData('text/plain', text.replace(/Ronning/g, 'Rønning'));
+    }
+  }
+
 </script>
+
+
+
 
 <section class="min-h-screen flex items-center jstify-center pt-16">
   <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
@@ -19,9 +30,11 @@
     </div>
 
     <div in:fly={{ y: 50, duration: 800 }} class="text-center md:text-left">
-      <h1 class="text-5xl md:text-7xl font-extrabold"> 
-        <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">Martin R<span class="o-slash"><span class="sr-only">ø</span><span aria-hidden="true">o</span></span>nning
+      <h1 class="text-5xl md:text-7xl font-extrabold" aria-label="Martin Rønning" oncopy={handleNameCopy}>
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-pink-500">Martin R<span class="o-slash">o</span>nning
         </span>
+
+        
       </h1>
       <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-lg">
         Full-stack developer producing experiences with Svelte and Unity.
