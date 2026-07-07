@@ -31,7 +31,7 @@
 
     <div in:fly={{ y: 50, duration: 800 }} class="text-center md:text-left">
       <h1 class="text-5xl md:text-7xl font-extrabold" aria-label="Martin Rønning" oncopy={handleNameCopy}>
-        <span class="flex flex-wrap gap-x-3 justify-center md:justify-start text-transparent bg-clip-text" style="background-image: linear-gradient(to right, #ffbd59, #b93241)">
+        <span class="flex flex-wrap gap-x-3 justify-center md:justify-start text-transparent bg-clip-text" style="background-image: linear-gradient(to left, #ffbd59, #b93241)">
           <span class="whitespace-nowrap">Martin</span>
           <span class="whitespace-nowrap">R<span class="o-slash">o</span>nning</span>
         </span> 
@@ -63,6 +63,12 @@
   .o-slash {
     position: relative;
     display: inline-block;
+
+    background-image: linear-gradient(to right, #ffbd59, #b93241);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+    -webkit-text-fill-color: transparent;
   }
 
   .o-slash [aria-hidden] {
