@@ -3,7 +3,10 @@
   import 'swiper/element/bundle';
   import { register } from 'swiper/element/bundle';
   import 'swiper/swiper-bundle.css';
+  import { urlFor } from '$lib/sanity';
+  import type { SanityImageSource } from '@sanity/image-url';
 
+  let { projectt } = $props();
 
   const projects = [
     { title: 'Project Title', tech: 'Tech1 / Tech2 / Tech3', img: 'https://picsum.photos/600/400?random=1', link: '#' },
@@ -51,7 +54,7 @@
       {#each projects as project (project.title)}
         <swiper-slide class="!w-80">
           <div class="bg-white dark:bg-gray-700 rounded-xl shadow-lg overflow-hidden transform transition hover:scale-105">
-            <img src={project.img} alt={project.title} class="w-full h-48 object-cover" />
+            <img src={urlFor(projectt.thumbnail).width(800).url()} alt={project.title} class="w-full h-48 object-cover" />
             <div class="p-4">
               <h3 class="text-xl font-semibold">{project.title}</h3>
               <p class="text-sm text-gray-500 dark:text-gray-300 mt-1">{project.tech}</p>

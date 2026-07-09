@@ -7,7 +7,7 @@ export default defineConfig({
   name: 'default',
   title: 'portfolio-cms',
 
-  projectId: 'pvaklrpx',
+  projectId: 'h5lihzvi',
   dataset: 'production',
 
   plugins: [structureTool(), visionTool()],

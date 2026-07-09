@@ -40,7 +40,7 @@
         Full-stack developer producing experiences with Svelte and Unity.
       </p>
       <div class="mt-8 flex gap-4 justify-center md:justify-start">
-        <a href="#projects" class="px-6 py-3 text-white rounded-full transition" style="background:#b93241;">See my work</a>
+        <a href="/work/immersive-seating" class="px-6 py-3 text-white rounded-full transition" style="background:#b93241;">See my work</a>
         <a href="#contact" class="secondary-btn">Contact</a>
       </div>
     </div>
