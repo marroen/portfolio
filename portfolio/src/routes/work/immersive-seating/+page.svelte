@@ -67,14 +67,7 @@
       >
         ✕ Exit
       </button>
-    {:else if isFakeFullscreen}
-      <button
-        onclick={exitFakeFullscreen}
-        class="absolute bottom-3 right-3 bg-black/50 hover:bg-black/70 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm transition z-10"
-      >
-        ✕ Exit
-      </button>
-    {:else}
+    {:else if !isFakeFullscreen}
       <button
         onclick={goFullscreen}
         class="absolute bottom-3 right-3 bg-black/50 hover:bg-black/70 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm transition z-10"
@@ -83,6 +76,18 @@
       </button>
     {/if}
   </div>
+
+  <!-- iOS Safari fix: exit button outside the embed div entirely -->
+  {#if isFakeFullscreen}
+    <button
+      onclick={exitFakeFullscreen}
+      style="position: fixed; bottom: 12px; right: 12px; z-index: 10000;"
+      class="bg-black/50 hover:bg-black/70 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm transition"
+    >
+      ✕ Exit
+    </button>
+  {/if}
+
   <p class="text-gray-500 dark:text-gray-400 mt-4 text-sm">Interactive 360° concert seat selector built in Unity, embedded on web.</p>
 </section>
 
