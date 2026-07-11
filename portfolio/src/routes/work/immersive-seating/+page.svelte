@@ -63,14 +63,14 @@
     {#if isNativeFullscreen}
       <button
         onclick={exitNativeFullscreen}
-        class="absolute top-3 right-3 bg-black/50 hover:bg-black/70 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm transition z-10"
+        class="absolute bottom-3 right-3 bg-black/50 hover:bg-black/70 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm transition z-10"
       >
         ✕ Exit
       </button>
     {:else if isFakeFullscreen}
       <button
         onclick={exitFakeFullscreen}
-        class="absolute top-3 right-3 bg-black/50 hover:bg-black/70 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm transition z-10"
+        class="absolute bottom-3 right-3 bg-black/50 hover:bg-black/70 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm transition z-10"
       >
         ✕ Exit
       </button>
