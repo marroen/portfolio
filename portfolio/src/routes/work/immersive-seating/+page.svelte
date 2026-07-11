@@ -2,7 +2,7 @@
   let iframeEl: HTMLIFrameElement;
 
   function onIframeLoad() {
-    const top = embedEl?.getBoundingClientRect().top + window.scrollY - 100;
+    const top = embedEl?.getBoundingClientRect().top + window.scrollY - 130;
     window.scrollTo({ top, behavior: 'smooth' });
   }
 
@@ -16,7 +16,6 @@
 <section class="pt-24 pb-20 max-w-6xl mx-auto px-4">
   <a href="/" class="text-sm mb-6 inline-block" style="color:#b93241">← Back</a>
   <h1 class="text-4xl font-bold mb-4">Immersive Seating</h1>
-  <p class="text-gray-500 dark:text-gray-400 mb-8">Interactive 360° concert seat selector built in Unity, embedded on web.</p>
 
   <div bind:this={embedEl} class="relative w-full aspect-video rounded-xl overflow-hidden shadow-xl">
     <iframe
@@ -34,7 +33,9 @@
     >
       ⛶ Fullscreen
     </button>
+
+      <p class="text-gray-500 dark:text-gray-400 mb-8">Interactive 360° concert seat selector built in Unity, embedded on web.</p>
+
   </div>
 
-  <div class="mt-4 text-sm text-gray-400 text-center">Click and drag to look around · Click a section to zoom in · Double-tap to reset</div>
 </section>
