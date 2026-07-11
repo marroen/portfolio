@@ -5,10 +5,15 @@
   let embedEl: HTMLDivElement;
   let isFakeFullscreen = $state(false);
   let isNativeFullscreen = $state(false);
+  let unityLoaded = $state(false);
 
   function onIframeLoad() {
     const top = embedEl?.getBoundingClientRect().top + window.scrollY - 130;
     window.scrollTo({ top, behavior: 'smooth' });
+  }
+
+  function onMessage(e: MessageEvent) {
+    if (e.data?.type === 'unity-ready') unityLoaded = true;
   }
 
   function goFullscreen() {
@@ -35,10 +40,12 @@
 
   onMount(() => {
     document.addEventListener('fullscreenchange', onFullscreenChange);
+    window.addEventListener('message', onMessage);
   });
 
   onDestroy(() => {
     document.removeEventListener('fullscreenchange', onFullscreenChange);
+    window.removeEventListener('message', onMessage);
   });
 </script>
 
@@ -50,6 +57,12 @@
     class="relative w-full aspect-video rounded-xl overflow-hidden shadow-xl"
     class:fake-fullscreen={isFakeFullscreen}
   >
+    {#if !unityLoaded}
+      <div class="absolute inset-0 flex items-center justify-center bg-gray-900 z-20">
+        <p class="text-white text-sm tracking-widest uppercase animate-pulse">Loading...</p>
+      </div>
+    {/if}
+
     <iframe
       bind:this={iframeEl}
       src="/immersive-seating/index.html"
@@ -77,7 +90,6 @@
     {/if}
   </div>
 
-  <!-- iOS Safari fix: exit button outside the embed div entirely -->
   {#if isFakeFullscreen}
     <button
       onclick={exitFakeFullscreen}
