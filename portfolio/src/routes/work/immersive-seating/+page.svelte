@@ -1,23 +1,55 @@
 <script lang="ts">
+  import { onMount, onDestroy } from 'svelte';
+
   let iframeEl: HTMLIFrameElement;
+  let embedEl: HTMLDivElement;
+  let isFakeFullscreen = $state(false);
+  let isNativeFullscreen = $state(false);
 
   function onIframeLoad() {
     const top = embedEl?.getBoundingClientRect().top + window.scrollY - 130;
     window.scrollTo({ top, behavior: 'smooth' });
   }
 
-  let embedEl: HTMLDivElement;
-
   function goFullscreen() {
-    iframeEl?.requestFullscreen();
+    if (embedEl?.requestFullscreen) {
+      embedEl.requestFullscreen();
+    } else {
+      isFakeFullscreen = true;
+      document.body.style.overflow = 'hidden';
+    }
   }
+
+  function exitNativeFullscreen() {
+    document.exitFullscreen();
+  }
+
+  function exitFakeFullscreen() {
+    isFakeFullscreen = false;
+    document.body.style.overflow = '';
+  }
+
+  function onFullscreenChange() {
+    isNativeFullscreen = !!document.fullscreenElement;
+  }
+
+  onMount(() => {
+    document.addEventListener('fullscreenchange', onFullscreenChange);
+  });
+
+  onDestroy(() => {
+    document.removeEventListener('fullscreenchange', onFullscreenChange);
+  });
 </script>
 
 <section class="pt-24 pb-20 max-w-6xl mx-auto px-4">
   <a href="/" class="text-sm mb-6 inline-block" style="color:#b93241">← Back</a>
   <h1 class="text-4xl font-bold mb-4">Immersive Seating</h1>
-
-  <div bind:this={embedEl} class="relative w-full aspect-video rounded-xl overflow-hidden shadow-xl">
+  <div
+    bind:this={embedEl}
+    class="relative w-full aspect-video rounded-xl overflow-hidden shadow-xl"
+    class:fake-fullscreen={isFakeFullscreen}
+  >
     <iframe
       bind:this={iframeEl}
       src="/immersive-seating/index.html"
@@ -27,15 +59,41 @@
       class="w-full h-full border-none"
       onload={onIframeLoad}
     />
-    <button
-      onclick={goFullscreen}
-      class="absolute bottom-3 right-3 bg-black/50 hover:bg-black/70 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm transition"
-    >
-      ⛶ Fullscreen
-    </button>
 
-      <p class="text-gray-500 dark:text-gray-400 mb-8">Interactive 360° concert seat selector built in Unity, embedded on web.</p>
-
+    {#if isNativeFullscreen}
+      <button
+        onclick={exitNativeFullscreen}
+        class="absolute top-3 right-3 bg-black/50 hover:bg-black/70 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm transition z-10"
+      >
+        ✕ Exit
+      </button>
+    {:else if isFakeFullscreen}
+      <button
+        onclick={exitFakeFullscreen}
+        class="absolute top-3 right-3 bg-black/50 hover:bg-black/70 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm transition z-10"
+      >
+        ✕ Exit
+      </button>
+    {:else}
+      <button
+        onclick={goFullscreen}
+        class="absolute bottom-3 right-3 bg-black/50 hover:bg-black/70 text-white text-xs px-3 py-1.5 rounded-full backdrop-blur-sm transition z-10"
+      >
+        ⛶ Fullscreen
+      </button>
+    {/if}
   </div>
-
+  <p class="text-gray-500 dark:text-gray-400 mt-4 text-sm">Interactive 360° concert seat selector built in Unity, embedded on web.</p>
 </section>
+
+<style>
+  .fake-fullscreen {
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: 9999;
+    border-radius: 0;
+    aspect-ratio: unset;
+  }
+</style>
