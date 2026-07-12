@@ -7,12 +7,12 @@
   let isNativeFullscreen = $state(false);
   let unityLoaded = $state(false);
 
-  /*
-  function onIframeLoad() {
+  /* function onIframeLoad() {
     const top = embedEl?.getBoundingClientRect().top + window.scrollY - 130;
     window.scrollTo({ top, behavior: 'smooth' });
   } */
 
+  
   onMount(async () => {
     
       await tick();
@@ -80,6 +80,7 @@
       </div>
     {/if}
 
+
     <iframe
       bind:this={iframeEl}
       src="/immersive-seating/index.html"
@@ -87,7 +88,6 @@
       allow="fullscreen"
       allowfullscreen
       class="w-full h-full border-none"
-      onload={onIframeLoad}
     />
 
     {#if isNativeFullscreen}
