@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { onMount, onDestroy } from 'svelte';
+  import { onMount, onDestroy, tick } from 'svelte';
 
   let iframeEl: HTMLIFrameElement;
   let embedEl: HTMLDivElement;
@@ -7,10 +7,26 @@
   let isNativeFullscreen = $state(false);
   let unityLoaded = $state(false);
 
+  /*
   function onIframeLoad() {
     const top = embedEl?.getBoundingClientRect().top + window.scrollY - 130;
     window.scrollTo({ top, behavior: 'smooth' });
-  }
+  } */
+
+  onMount(async () => {
+    
+      await tick();
+
+      requestAnimationFrame(() => {
+          window.scrollTo({
+              top: 90,
+              behavior: 'smooth'
+          });
+      });
+
+      document.addEventListener('fullscreenchange', onFullscreenChange);
+      window.addEventListener('message', onMessage);
+  });
 
   function onMessage(e: MessageEvent) {
     if (e.data?.type === 'unity-ready') unityLoaded = true;
@@ -38,10 +54,11 @@
     isNativeFullscreen = !!document.fullscreenElement;
   }
 
+  /*
   onMount(() => {
     document.addEventListener('fullscreenchange', onFullscreenChange);
     window.addEventListener('message', onMessage);
-  });
+  }); */
 
   onDestroy(() => {
     document.removeEventListener('fullscreenchange', onFullscreenChange);

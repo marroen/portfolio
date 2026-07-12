@@ -13,9 +13,6 @@
 
 </script>
 
-
-
-
 <section class="min-h-screen flex items-center jstify-center pt-16">
   <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-center">
 
@@ -40,8 +37,8 @@
         Full-stack developer producing experiences with Svelte and Unity.
       </p>
       <div class="mt-8 flex gap-4 justify-center md:justify-start">
-        <a href="/work/immersive-seating" class="px-6 py-3 text-white rounded-full transition" style="background:#b93241;">See my work</a>
-        <a href="#contact" class="secondary-btn">Contact</a>
+        <a href="/work" class="px-6 py-3 text-white rounded-full transition" style="background:#b93241;">See my work</a>
+        <a href="/contact" class="secondary-btn">Contact</a>
       </div>
     </div>
   </div>

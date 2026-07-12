@@ -7,9 +7,8 @@
   <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
     <a href="/" class="text-xl font-bold">MR</a>
     <div class="flex items-center gap-4 text-sm font-medium">
-      <a href="#about" class="hover:text-purple-500 transition">About</a>
-      <a href="#projects" class="hover:text-purple-500 transition">Projects</a>
-      <a href="contact" class="hover:text-purple-500 transition">Contact</a>
+      <a href="/work" class="hover:text-purple-500 transition">Work</a>
+      <a href="/contact" class="hover:text-purple-500 transition">Contact</a>
       <button
         onclick={toggle}
         class="p-2 rounded-full hover:bg-gray-200 dark:hover:bg-gray-700 transition"

@@ -1,22 +1,46 @@
 <script lang="ts">
-  let { data } = $props();
-  import { urlFor } from '$lib/sanity';
+	import { urlFor } from '$lib/sanity';
+  import { onMount, tick } from 'svelte';
+  import { fade, fly } from 'svelte/transition';
+
+	let { data } = $props();
 </script>
 
-<section class="pt-24 pb-20 max-w-6xl mx-auto px-4">
-  <h1 class="text-4xl font-bold mb-12">My Work</h1>
-  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    {#each data.projects as project}
-      <a href="/work/immersive-seating" class="group block bg-white dark:bg-gray-800 rounded-xl shadow-lg overflow-hidden hover:scale-105 transition-transform">
-        {#if project.thumbnail}
-          <img src={urlFor(project.thumbnail).width(600).url()} alt={project.title} class="w-full h-48 object-cover" />
-        {/if}
-        <div class="p-5">
-          <h2 class="text-xl font-semibold">{project.title}</h2>
-          <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">{project.description ?? ''}</p>
-          <span class="mt-3 inline-block text-sm font-medium" style="color:#b93241">View project →</span>
+<div in:fly={{ y: 50, duration: 800 }} class="text-center md:text-left">
+  <div class="max-w-7xl mx-auto px-8 py-24">
+    {#each data.projects as project, i}
+      <section
+        class="grid lg:grid-cols-[1.3fr_1fr] gap-20 items-center min-h-[80vh]"
+        id="project-exhibition"
+      >
+        <!-- IMAGE -->
+        <div class:lg:order-2={i % 2 === 1}>
+          <img
+            src={urlFor(project.thumbnail).width(1200).url()}
+            alt={project.name}
+            class="w-full rounded-2xl object-cover"
+          />
         </div>
-      </a>
+
+        <!-- TEXT -->
+        <div class:lg:order-1={i % 2 === 1}>
+          <h2 class="text-5xl font-bold mb-6">
+            {project.name}
+          </h2>
+
+          <p class="text-lg text-zinc-400 leading-relaxed mb-8">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+            This will eventually come from Sanity.
+          </p>
+
+          <a
+            href="/work/immersive-seating"
+            class="inline-flex items-center gap-2 text-[#ffbd59] hover:gap-4 transition-all"
+          >
+            View project →
+          </a>
+        </div>
+      </section>
     {/each}
   </div>
-</section>
+</div>
