@@ -16,6 +16,10 @@ export const projectType = defineType ({
       options: { accept: 'video/*' }
     }),
     defineField({
+      name: 'thumbnail',
+      type: 'image',
+    }),
+    defineField({
       name: 'cardDescription',
       type: 'string',
     }),
