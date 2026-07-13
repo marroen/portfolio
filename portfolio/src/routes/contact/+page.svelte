@@ -9,7 +9,7 @@
       <h1 class="text-5xl md:text-7xl font-extrabold">Get in touch</h1>
       <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-8">
         I'm currently open to design and development projects,
-        and freelance work in XR, Unity, and computer vision. If any of my work caught your attention, I'd love to hear from you.
+        and freelance work within Unity, web design, computer vision and XR. If any of my work caught your attention, I'd love to hear from you.
       </p>
       <div class="flex flex-col gap-4">
         <a href="mailto:ronningmartin@outlook.com" class="text-sm font-medium hover:underline" style="color:#b93241">ronningmartin@outlook.com</a>
