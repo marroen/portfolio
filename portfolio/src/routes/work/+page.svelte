@@ -17,7 +17,11 @@
       <section class="grid lg:grid-cols-[1.3fr_1fr] gap-8 lg:gap-20 items-center min-h-[80vh] py-12 lg:py-0">
 
         <div class="{i % 2 === 1 ? 'lg:order-2' : ''}">
-          <img src={urlFor(project.thumbnail).width(1200).url()} alt={project.name} class="w-full rounded-2xl object-cover max-h-[45vh] lg:max-h-[70vh]" />
+          {#if project.previewVideo?.asset?.url}
+            <video src={project.previewVideo.asset.url} autoplay muted loop playsinline class="w-full rounded-2xl object-cover max-h-[45vh] lg:max-h-[70vh]" />
+          {:else}
+            <img src={urlFor(project.thumbnail).width(1200).url()} alt={project.name} class="w-full rounded-2xl object-cover max-h-[45vh] lg:max-h-[70vh]" />
+          {/if}
         </div>
 
         <div class="text-left {i % 2 === 1 ? 'lg:order-1' : ''}">
