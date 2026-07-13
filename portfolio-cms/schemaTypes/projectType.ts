@@ -13,5 +13,15 @@ export const projectType = defineType ({
       name: 'thumbnail',
       type: 'image',
     }),
+    defineField({
+      name: 'cardDescription',
+      type: 'string',
+    }),
+    defineField({
+      name: 'deepDescription',
+      title: 'Deep Description',
+      type: 'array',
+      of: [{ type: 'block' }]
+    }),
   ],
 })

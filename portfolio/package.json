@@ -38,6 +38,7 @@
 	},
 	"dependencies": {
 		"@lottiefiles/dotlottie-svelte": "^0.10.6",
+		"@portabletext/svelte": "^3.0.1",
 		"@sanity/client": "^7.23.0",
 		"@sanity/image-url": "^2.1.1",
 		"motion": "^12.42.2",

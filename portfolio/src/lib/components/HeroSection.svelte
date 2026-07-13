@@ -34,7 +34,7 @@
         </span> 
       </h1>
       <p class="mt-4 text-lg text-gray-600 dark:text-gray-300 max-w-lg">
-        Full-stack developer producing experiences with Svelte and Unity.
+        Producing experiences with Svelte, Unity and more.
       </p>
       <div class="mt-8 flex gap-4 justify-center md:justify-start">
         <a href="/work" class="px-6 py-3 text-white rounded-full transition" style="background:#b93241;">See my work</a>

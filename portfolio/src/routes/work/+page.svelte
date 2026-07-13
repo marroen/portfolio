@@ -3,6 +3,12 @@
   import { fly } from 'svelte/transition';
 
   let { data } = $props();
+
+  import { goto } from '$app/navigation';
+
+  function navigate(project) {
+    goto('/work/immersive-seating', { state: { deepDescription: project.deepDescription } });
+  }
 </script>
 
 <div in:fly={{ y: 50, duration: 800 }}>
@@ -16,9 +22,8 @@
 
         <div class="text-left {i % 2 === 1 ? 'lg:order-1' : ''}">
           <h2 class="text-4xl lg:text-5xl font-bold mb-6">{project.name}</h2>
-          <p class="text-lg text-zinc-400 leading-relaxed mb-8">Lorem ipsum dolor sit amet, consectetur adipiscing elit. This will eventually come from Sanity.</p>
-          <a href="/work/immersive-seating" class="inline-flex items-center gap-2 text-[#ffbd59] hover:gap-4 transition-all">View project →</a>
-        </div>
+          <p class="text-lg text-zinc-400 leading-relaxed mb-8">{project.cardDescription}</p>
+          <button onclick={() => navigate(project)} class="inline-flex items-center gap-2 text-[#ffbd59] hover:gap-4 transition-all">View project →</button>        </div>
 
       </section>
     {/each}

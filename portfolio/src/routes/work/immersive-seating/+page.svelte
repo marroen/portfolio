@@ -1,5 +1,6 @@
 <script lang="ts">
   import { onMount, onDestroy, tick } from 'svelte';
+  import { PortableText } from '@portabletext/svelte';
 
   let iframeEl: HTMLIFrameElement;
   let embedEl: HTMLDivElement;
@@ -11,7 +12,6 @@
     const top = embedEl?.getBoundingClientRect().top + window.scrollY - 130;
     window.scrollTo({ top, behavior: 'smooth' });
   } */
-
   
   onMount(async () => {
     
@@ -64,11 +64,14 @@
     document.removeEventListener('fullscreenchange', onFullscreenChange);
     window.removeEventListener('message', onMessage);
   });
+
+  import { page } from '$app/stores';
+  const description = $page.state.deepDescription;
 </script>
 
 <section class="pt-24 pb-20 max-w-6xl mx-auto px-4">
-  <a href="/" class="text-sm mb-6 inline-block" style="color:#b93241">← Back</a>
-  <h1 class="text-4xl font-bold mb-4">Immersive Seating</h1>
+  <a href="/work" class="text-sm mb-6 inline-block" style="color:#b93241">← Back</a>
+  <h1 class="text-4xl font-bold mb-4">ImmersiveSeating</h1>
   <div
     bind:this={embedEl}
     class="relative w-full aspect-video rounded-xl overflow-hidden shadow-xl"
@@ -117,7 +120,9 @@
     </button>
   {/if}
 
-  <p class="text-gray-500 dark:text-gray-400 mt-4 text-sm">Interactive 360° concert seat selector built in Unity, embedded on web.</p>
+  <div class="prose dark:prose-invert prose-a:text-[#b93241] mt-4 text-sm text-gray-500">
+    <PortableText value={description} />
+  </div>
 </section>
 
 <style>
